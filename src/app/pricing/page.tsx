@@ -1,5 +1,5 @@
-import PricingCard from "@/components/PricingCard";
-import { plans } from "@/data/plans";
+import PricingCard from "../../components/PricingCard";
+import { plans } from "../../data/plans";
 
 export default function PricingPage() {
   return (
