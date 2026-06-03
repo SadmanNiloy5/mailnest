@@ -8,24 +8,34 @@ export default function MailPage() {
         My Mail
       </h1>
 
-      <div className="space-y-4">
+      <div className="grid gap-6 lg:grid-cols-2">
 
         {mails.map((mail) => (
           <div
             key={mail.id}
             className="rounded-xl bg-white p-6 shadow"
           >
-            <h3 className="font-bold">
-              {mail.sender}
+
+            <div className="mb-4">
+
+              <p className="font-bold">
+                From: {mail.sender}
+              </p>
+
+              <p className="text-sm text-gray-500">
+                {mail.date}
+              </p>
+
+            </div>
+
+            <h3 className="text-xl font-semibold">
+              {mail.subject}
             </h3>
 
-            <p className="mt-2">
-              {mail.subject}
+            <p className="mt-4 text-gray-600">
+              {mail.message}
             </p>
 
-            <p className="mt-2 text-sm text-gray-500">
-              {mail.date}
-            </p>
           </div>
         ))}
 
