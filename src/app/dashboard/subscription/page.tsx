@@ -1,5 +1,5 @@
-import { plans } from "@/data/plans";
-
+import { Plan } from "../../types/plan";
+import { plans } from "../../data/plans";
 export default function SubscriptionPage() {
   return (
     <div>

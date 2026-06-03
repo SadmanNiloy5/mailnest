@@ -1,5 +1,5 @@
-import DashboardSidebar from "@/components/DashboardSidebar";
-import MobileSidebar from "@/components/MobileSidebar";
+import DashboardSidebar from "../components/DashboardSidebar";
+import MobileSidebar from "../components/MobileSidebar";
 
 export default function DashboardLayout({
   children,

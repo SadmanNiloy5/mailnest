@@ -1,6 +1,6 @@
 "use client";
 
-import { currentUser } from "@/data/users";
+import { currentUser } from "../../data/users";
 import toast from "react-hot-toast";
 
 export default function ProfilePage() {

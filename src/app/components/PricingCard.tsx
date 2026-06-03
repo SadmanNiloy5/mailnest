@@ -1,4 +1,5 @@
-import { Plan } from "@/types/plan";
+
+import { Plan } from "../types/plan";
 
 interface PricingCardProps {
   plan: Plan;

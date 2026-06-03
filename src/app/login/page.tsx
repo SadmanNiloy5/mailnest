@@ -2,7 +2,7 @@
 
 import toast from "react-hot-toast";
 import Link from "next/link";
-import AuthContainer from "@/components/AuthContainer";
+import AuthContainer from "../components/AuthContainer";
 
 export default function LoginPage() {
   return (

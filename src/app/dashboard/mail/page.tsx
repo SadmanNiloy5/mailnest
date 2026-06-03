@@ -1,4 +1,4 @@
-import { mails } from "@/data/mails";
+import { mails } from "../../data/mails";
 
 export default function MailPage() {
   return (

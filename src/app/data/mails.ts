@@ -1,4 +1,4 @@
-import { Mail } from "@/types/mail";
+import { Mail } from "../types/mail";
 
 export const mails: Mail[] = [
   {
