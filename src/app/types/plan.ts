@@ -1,7 +1,6 @@
-export default function PricingPage() {
-  return (
-    <div>
-      <h1>Pricing Page</h1>
-    </div>
-  );
+export interface Plan {
+  id: number;
+  name: string;
+  price: number;
+  features: string[];
 }
