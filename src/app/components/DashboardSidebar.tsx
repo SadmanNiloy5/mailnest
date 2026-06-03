@@ -26,7 +26,7 @@ export default function DashboardSidebar() {
   ];
 
   return (
-    <aside className="w-64 border-r bg-white">
+    <aside className="hidden w-64 border-r bg-white md:block">
 
       <div className="border-b p-6">
         <h2 className="text-2xl font-bold text-blue-600">
@@ -34,13 +34,13 @@ export default function DashboardSidebar() {
         </h2>
       </div>
 
-      <nav className="flex flex-col p-4">
+      <nav className="flex flex-col gap-2 p-4">
 
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className={`rounded-lg p-3 ${
+            className={`rounded-lg p-3 transition ${
               pathname === link.href
                 ? "bg-blue-600 text-white"
                 : "hover:bg-gray-100"

@@ -1,4 +1,7 @@
+"use client";
+
 import { currentUser } from "@/data/users";
+import toast from "react-hot-toast";
 
 export default function ProfilePage() {
   return (
@@ -11,40 +14,25 @@ export default function ProfilePage() {
 
         <div className="space-y-5">
 
-          <div>
-            <label className="mb-2 block font-medium">
-              Full Name
-            </label>
+          <input
+            defaultValue={currentUser.name}
+            className="w-full rounded-lg border p-3"
+          />
 
-            <input
-              defaultValue={currentUser.name}
-              className="w-full rounded-lg border p-3"
-            />
-          </div>
+          <input
+            defaultValue={currentUser.email}
+            className="w-full rounded-lg border p-3"
+          />
 
-          <div>
-            <label className="mb-2 block font-medium">
-              Email
-            </label>
-
-            <input
-              defaultValue={currentUser.email}
-              className="w-full rounded-lg border p-3"
-            />
-          </div>
-
-          <div>
-            <label className="mb-2 block font-medium">
-              Phone
-            </label>
-
-            <input
-              defaultValue={currentUser.phone}
-              className="w-full rounded-lg border p-3"
-            />
-          </div>
+          <input
+            defaultValue={currentUser.phone}
+            className="w-full rounded-lg border p-3"
+          />
 
           <button
+            onClick={() =>
+              toast.success("Profile Updated")
+            }
             className="rounded-lg bg-blue-600 px-6 py-3 text-white"
           >
             Save Changes

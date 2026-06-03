@@ -2,31 +2,34 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
-  const navLinks = [
+  const links = [
     {
-      label: "Home",
+      name: "Home",
       href: "/",
     },
     {
-      label: "Pricing",
+      name: "Pricing",
       href: "/pricing",
     },
     {
-      label: "How It Works",
+      name: "How It Works",
       href: "/how-it-works",
     },
     {
-      label: "Contact",
+      name: "Contact",
       href: "/contact",
     },
   ];
 
   return (
-    <header className="border-b bg-white">
+    <header className="sticky top-0 z-50 border-b bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
         <Link
@@ -36,19 +39,19 @@ export default function Navbar() {
           MailNest
         </Link>
 
-        <nav className="flex items-center gap-6">
+        <nav className="hidden items-center gap-6 md:flex">
 
-          {navLinks.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={
                 pathname === link.href
                   ? "font-semibold text-blue-600"
-                  : "text-gray-600"
+                  : "text-gray-600 hover:text-blue-600"
               }
             >
-              {link.label}
+              {link.name}
             </Link>
           ))}
 
@@ -61,7 +64,41 @@ export default function Navbar() {
 
         </nav>
 
+        <button
+          className="md:hidden"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
       </div>
+
+      {open && (
+        <div className="border-t bg-white md:hidden">
+
+          <div className="flex flex-col p-4">
+
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="py-3"
+                onClick={() => setOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+
+            <Link
+              href="/login"
+              className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-center text-white"
+            >
+              Login
+            </Link>
+
+          </div>
+
+        </div>
+      )}
     </header>
   );
 }

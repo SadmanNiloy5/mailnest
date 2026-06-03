@@ -1,3 +1,6 @@
+"use client";
+
+import toast from "react-hot-toast";
 import Link from "next/link";
 import AuthContainer from "@/components/AuthContainer";
 
@@ -21,11 +24,15 @@ export default function LoginPage() {
           className="w-full rounded-lg border p-3"
         />
 
-        <button
-          className="w-full rounded-lg bg-blue-600 py-3 text-white"
-        >
-          Login
-        </button>
+       <button
+  type="button"
+  onClick={() =>
+    toast.success("Login Successful")
+  }
+  className="w-full rounded-lg bg-blue-600 py-3 text-white"
+>
+  Login
+</button>
 
       </form>
 

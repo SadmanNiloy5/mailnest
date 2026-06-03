@@ -1,4 +1,5 @@
 import DashboardSidebar from "@/components/DashboardSidebar";
+import MobileSidebar from "@/components/MobileSidebar";
 
 export default function DashboardLayout({
   children,
@@ -10,8 +11,12 @@ export default function DashboardLayout({
 
       <DashboardSidebar />
 
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-4 md:p-8">
+
+        <MobileSidebar />
+
         {children}
+
       </main>
 
     </div>

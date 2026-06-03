@@ -1,3 +1,8 @@
+"use client";
+
+import toast from "react-hot-toast";
+
+
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-20">
@@ -42,12 +47,15 @@ export default function ContactPage() {
             className="w-full rounded-lg border p-3"
           />
         </div>
-
-        <button
-          className="rounded-lg bg-blue-600 px-6 py-3 text-white"
-        >
-          Send Message
-        </button>
+<button
+  type="button"
+  onClick={() =>
+    toast.success("Message Sent Successfully")
+  }
+  className="rounded-lg bg-blue-600 px-6 py-3 text-white"
+>
+  Send Message
+</button>
 
       </form>
     </div>
