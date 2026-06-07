@@ -1,40 +1,133 @@
 import Link from "next/link";
+import { Mail } from "lucide-react";
+
+const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const TwitterIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+  </svg>
+);
+
+const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    product: [
+      { name: "Pricing", href: "/pricing" },
+      { name: "How It Works", href: "/how-it-works" },
+      { name: "Contact", href: "/contact" },
+    ],
+    legal: [
+      { name: "Terms & Conditions", href: "/terms" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+    ],
+    social: [
+      { name: "Twitter", href: "#", icon: TwitterIcon },
+      { name: "GitHub", href: "#", icon: GithubIcon },
+      { name: "LinkedIn", href: "#", icon: LinkedinIcon },
+    ],
+  };
+
   return (
-    <footer className="mt-16 border-t bg-gray-50">
-      <div className="mx-auto max-w-7xl px-6 py-10">
-
-        <div className="flex flex-col gap-4 md:flex-row md:justify-between">
-
-          <div>
-            <h2 className="text-xl font-bold text-blue-600">
-              MailNest
-            </h2>
-
-            <p className="mt-2 text-sm text-gray-600">
-              Secure temporary mailbox platform.
+    <footer className="border-t border-gray-100 bg-gray-50/80">
+      <div className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid gap-12 md:grid-cols-4">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 transition-transform duration-300 group-hover:scale-110">
+                <Mail className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-xl font-bold gradient-text">MailNest</span>
+            </Link>
+            <p className="mt-4 text-sm leading-relaxed text-gray-500">
+              Your secure temporary mailbox platform. Protect your privacy and manage emails effortlessly.
             </p>
           </div>
 
-          <div className="flex gap-6">
-            <Link href="/terms">Terms</Link>
-
-            <Link href="/privacy-policy">
-              Privacy Policy
-            </Link>
-
-            <Link href="/contact">
-              Contact
-            </Link>
+          {/* Product Links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">
+              Product
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.product.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-gray-500 transition-colors hover:text-indigo-600"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
+          {/* Legal Links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">
+              Legal
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.legal.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-gray-500 transition-colors hover:text-indigo-600"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">
+              Connect
+            </h3>
+            <div className="flex gap-3">
+              {footerLinks.social.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  aria-label={item.name}
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-500 transition-all hover:bg-indigo-100 hover:text-indigo-600 hover:-translate-y-0.5"
+                >
+                  <item.icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+            <p className="mt-6 text-sm text-gray-500">
+              hello@mailnest.com
+            </p>
+          </div>
         </div>
 
-        <p className="mt-6 text-center text-sm text-gray-500">
-          © 2026 MailNest. All rights reserved.
-        </p>
-
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-gray-200 pt-8 md:flex-row">
+          <p className="text-sm text-gray-400">
+            © {currentYear} MailNest. All rights reserved.
+          </p>
+          <p className="text-sm text-gray-400">
+            Built with ❤️ for privacy
+          </p>
+        </div>
       </div>
     </footer>
   );

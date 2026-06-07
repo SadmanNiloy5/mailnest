@@ -5,4 +5,6 @@ export const currentUser: User = {
   name: "John Doe",
   email: "john@example.com",
   phone: "+880123456789",
+  plan: "Pro",
+  joinDate: "2026-01-15",
 };
